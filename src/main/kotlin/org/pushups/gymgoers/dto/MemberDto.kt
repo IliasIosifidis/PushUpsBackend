@@ -5,5 +5,6 @@ data class MemberDto(
     val firstName: String,
     val lastName: String,
     val email: String? = null,
-    val phoneNumber: String? = null
+    val phoneNumber: String? = null,
+    val active: Boolean = true
 )

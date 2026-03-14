@@ -22,5 +22,5 @@ data class Booking(
     var date: LocalDate = LocalDate.now(),
 
     @Column(nullable = false)
-    var bookedAt: LocalDateTime = LocalDateTime.now()
+    var bookedAt: LocalDateTime = LocalDateTime.now(),
 )

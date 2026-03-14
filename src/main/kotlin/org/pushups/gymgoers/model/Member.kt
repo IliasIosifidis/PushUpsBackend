@@ -18,5 +18,11 @@ data class Member(
     var email: String? = null,
 
     @Column(unique = true)
-    var phoneNumber: String? = null
+    var phoneNumber: String? = null,
+
+    @Column(nullable = false, columnDefinition = "tinyint default '1'")
+    var active: Boolean = true,
+
+    @OneToMany(mappedBy = "member", cascade = [CascadeType.ALL], orphanRemoval = true)
+    var bookings: MutableList<Booking> = mutableListOf()
 )
