@@ -49,4 +49,11 @@ class MemberServiceImpl(
 
         return repository.save(member).toDto()
     }
+
+    override fun toggleActive(id: Long): MemberDto {
+        val member = repository.findById(id)
+            .orElseThrow { ResourceNotFoundException("Member not found") }
+        member.active = !member.active
+        return repository.save(member).toDto()
+    }
 }

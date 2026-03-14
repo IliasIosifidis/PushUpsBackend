@@ -38,6 +38,11 @@ class MemberController(
         @RequestBody req: UpdateMemberRequest
     ): MemberDto = service.updateMember(id = id, req =  req)
 
+    @PatchMapping("/{id}")
+    fun toggleActive(
+        @PathVariable id: Long
+    ): MemberDto = service.toggleActive(id)
+
     @DeleteMapping("/{id}")
     fun deleteMember(@PathVariable id: Long): ResponseEntity<Void> {
         service.deleteById(id)
