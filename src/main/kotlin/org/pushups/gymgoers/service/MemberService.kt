@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable
 
 interface MemberService {
     fun getAll(pageable: Pageable): Page<MemberDto>
+    fun findAllActive(pageable: Pageable): Page<MemberDto>
     fun addMember(member: AddMemberRequest): MemberDto
     fun deleteById(id: Long)
     fun findByName(name: String, pageable: Pageable): Page<MemberDto>

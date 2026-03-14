@@ -9,7 +9,6 @@ import org.pushups.gymgoers.model.Member
 import org.pushups.gymgoers.repository.MemberRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
-import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Service
 
 @Service
@@ -18,6 +17,9 @@ class MemberServiceImpl(
 ) : MemberService {
     override fun getAll(pageable: Pageable): Page<MemberDto> =
         repository.findAll(pageable).map { it.toDto() }
+
+    override fun findAllActive(pageable: Pageable): Page<MemberDto> =
+        repository.findByActiveTrue(pageable).map { it.toDto() }
 
     override fun addMember(req: AddMemberRequest): MemberDto {
         val member = Member(

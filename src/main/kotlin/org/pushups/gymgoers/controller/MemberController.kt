@@ -20,6 +20,12 @@ class MemberController(
         @RequestParam(defaultValue = "25") size: Int
     ): Page<MemberDto> = service.getAll(PageRequest.of(page,size))
 
+    @GetMapping("/active")
+    fun findAllActive(
+        @RequestParam(defaultValue = "0") page:Int,
+        @RequestParam(defaultValue = "25") size: Int
+    ): Page<MemberDto> = service.findAllActive(PageRequest.of(page,size))
+
     @GetMapping("/search")
     fun findMember(
         @RequestParam name: String,
