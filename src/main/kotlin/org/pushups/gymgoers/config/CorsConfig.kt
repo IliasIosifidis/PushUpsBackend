@@ -12,7 +12,7 @@ class CorsConfig : WebMvcConfigurer {
                 "http://localhost:3000",
                 "https://pushupsbackend-production.up.railway.app/api"
             )
-            .allowedMethods("GET","POST","PUT","DELETE")
+            .allowedMethods("GET","POST","PUT","PATCH","DELETE")
             .allowedHeaders("*")
     }
 }
