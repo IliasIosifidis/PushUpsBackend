@@ -7,8 +7,8 @@ import org.pushups.gymgoers.model.Member
 fun Booking.toDto(): BookingDto {
     return BookingDto(
         id = id,
-        member = member,
-        gymClass = gymClass,
+        member = member.toDto(),
+        gymClass = gymClass.toDto(),
         date = date,
         bookedAt = bookedAt
     )

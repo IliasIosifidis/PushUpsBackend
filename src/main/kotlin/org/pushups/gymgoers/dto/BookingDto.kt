@@ -7,8 +7,8 @@ import java.time.LocalDateTime
 
 data class BookingDto(
     val id: Long? = null,
-    val member: Member,
-    val gymClass: GymClass,
+    val member: MemberDto,
+    val gymClass: GymClassDto,
     val date: LocalDate,
     val bookedAt: LocalDateTime
 )

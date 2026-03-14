@@ -36,7 +36,7 @@ class BookingServiceImpl(
         val date = req.date
         // EXCEPTION WHEN CLASS IS FULL
         val currentBookings = bookingRepository.countByGymClassIdAndDate(gymClassId = gymClass.id, date =  date)
-        if (currentBookings > gymClass.maxCapacity){
+        if (currentBookings >= gymClass.maxCapacity){
             throw ClassFullException("Class ${gymClass.name} is full at ${req.date}")
         }
         // CRATING THE BOOKING

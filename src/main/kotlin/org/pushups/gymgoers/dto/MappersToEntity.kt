@@ -17,8 +17,8 @@ fun MemberDto.toEntity(): Member{
 fun BookingDto.toEntity(): Booking{
     return Booking(
         id = id,
-        member = member,
-        gymClass = gymClass,
+        member = member.toEntity(),
+        gymClass = gymClass.toEntity(),
         date = date,
         bookedAt = bookedAt
     )

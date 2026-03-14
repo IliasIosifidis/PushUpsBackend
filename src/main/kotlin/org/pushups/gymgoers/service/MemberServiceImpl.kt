@@ -36,7 +36,7 @@ class MemberServiceImpl(
         repository.deleteById(id)
     }
 
-    override fun findByName(@Param("name") name: String, pageable: Pageable): Page<MemberDto> =
+    override fun findByName(name: String, pageable: Pageable): Page<MemberDto> =
         repository.findByName(name, pageable).map { it.toDto() }
 
     override fun updateMember(req: UpdateMemberRequest, id: Long): MemberDto {
