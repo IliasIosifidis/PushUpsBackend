@@ -16,4 +16,6 @@ interface BookingRepository : JpaRepository<Booking, Long> {
     fun findByMemberId(memberId: Long, pageable: Pageable): Page<Booking>
 
     fun countByGymClassIdAndDate(gymClassId: Long?, date: LocalDate): Long
+
+    fun findByDateBetween(start: LocalDate, end: LocalDate): List<Booking>
 }

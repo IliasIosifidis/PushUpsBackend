@@ -2,18 +2,12 @@ package org.pushups.gymgoers.controller
 
 import org.pushups.gymgoers.dto.BookingDto
 import org.pushups.gymgoers.dto.BookingRequest
+import org.pushups.gymgoers.dto.WeeklyBookingsDto
 import org.pushups.gymgoers.service.BookingService
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.time.LocalDate
 
 @RestController
@@ -34,6 +28,11 @@ class BookingController(
     fun countBookingsByDate(
         @RequestParam date: LocalDate
     ): List<Array<Any>> = service.countBookingsByDate(date)
+
+    @GetMapping("/weekly")
+    fun getWeeklyBookings(
+        @RequestParam date: LocalDate
+    ): WeeklyBookingsDto = service.getWeeklyClasses(date)
 
     @GetMapping("/member/{id}")
     fun findMemberBookings(

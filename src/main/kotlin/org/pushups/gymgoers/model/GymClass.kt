@@ -4,7 +4,6 @@ import jakarta.persistence.*
 import java.time.DayOfWeek
 import java.time.LocalTime
 
-
 @Entity
 @Table(name = "gym_class")
 data class GymClass(
