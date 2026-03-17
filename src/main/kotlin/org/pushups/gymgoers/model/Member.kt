@@ -23,6 +23,9 @@ data class Member(
     @Column(nullable = false, columnDefinition = "tinyint default '1'")
     var active: Boolean = true,
 
+    @Column(nullable = false)
+    var role: String = "MEMBER",
+
     @OneToMany(mappedBy = "member", cascade = [CascadeType.ALL], orphanRemoval = true)
     var bookings: MutableList<Booking> = mutableListOf()
 )
