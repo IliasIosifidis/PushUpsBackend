@@ -8,7 +8,9 @@ import org.springframework.security.web.SecurityFilterChain
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig {
+class SecurityConfig(
+    private val oAuth2LoginSuccessHandler: OAuth2LoginSuccessHandler
+) {
 
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
@@ -17,12 +19,15 @@ class SecurityConfig {
             .csrf { it.disable() }
             .authorizeHttpRequests {
                 it
+                    .requestMatchers("/api/auth/**").authenticated()
                     .requestMatchers("/api/member/**").hasRole("ADMIN")
                     .requestMatchers("/api/booking/weekly").authenticated()
                     .requestMatchers("/api/booking/**").authenticated()
                     .anyRequest().permitAll()
             }
-            .oauth2Login {  }
+            .oauth2Login {
+                it.successHandler(oAuth2LoginSuccessHandler)
+            }
         return http.build()
     }
 }
