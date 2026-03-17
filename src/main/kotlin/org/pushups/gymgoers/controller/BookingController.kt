@@ -41,6 +41,11 @@ class BookingController(
         @RequestParam(defaultValue = "25") size: Int
     ): Page<BookingDto> = service.findMemberBookings(memberId = id, PageRequest.of(page,size) )
 
+    @GetMapping("/memberStats/{id}")
+    fun memberStats(
+        @PathVariable("id") memberId: Long
+    ): List<LocalDate> = service.memberStats(memberId)
+
     @PostMapping
     fun addBooking(
         @RequestBody() bookingRequest: BookingRequest

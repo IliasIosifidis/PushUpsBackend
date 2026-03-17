@@ -27,10 +27,10 @@ class DataInitializer(
 
 
 //         FAILSAFE TO NOT RUN AGAIN IF IT DID ONCE
-        if (memberRepository.count() > 0 || gymClassRepository.count() > 0 || bookingRepository.count() > 0) return
+//        if (memberRepository.count() > 0 || gymClassRepository.count() > 0 || bookingRepository.count() > 0) return
 
         // FAKE MEMBERS
-        val members = (1..1000).map {
+        val members = (1..200).map {
             memberRepository.save(
                 Member(
                     firstName = faker.name().firstName(),

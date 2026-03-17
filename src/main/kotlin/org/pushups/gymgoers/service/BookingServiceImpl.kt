@@ -108,6 +108,8 @@ class BookingServiceImpl(
             days = days
         )
     }
+
+    override fun memberStats(memberId: Long): List<LocalDate> = bookingRepository.findDatesByMemberId(memberId)
 }
 
 

@@ -18,4 +18,7 @@ interface BookingRepository : JpaRepository<Booking, Long> {
     fun countByGymClassIdAndDate(gymClassId: Long?, date: LocalDate): Long
 
     fun findByDateBetween(start: LocalDate, end: LocalDate): List<Booking>
+
+    @Query("SELECT b.date FROM Booking b WHERE b.member.id = :memberId")
+    fun findDatesByMemberId(memberId: Long): List<LocalDate>
 }

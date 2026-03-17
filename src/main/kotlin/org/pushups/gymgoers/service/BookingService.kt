@@ -15,4 +15,5 @@ interface BookingService {
     fun deleteBooking(id: Long)
     fun findMemberBookings(memberId: Long, pageable: Pageable): Page<BookingDto>
     fun getWeeklyClasses(date: LocalDate): WeeklyBookingsDto
+    fun memberStats(memberId: Long): List<LocalDate>
 }
