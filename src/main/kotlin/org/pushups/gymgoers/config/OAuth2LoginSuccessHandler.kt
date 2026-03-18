@@ -37,6 +37,6 @@ class OAuth2LoginSuccessHandler(
 
         //Send to the frontend after login
 //        response.sendRedirect("http://localhost:3000")  // LOCAL
-        response.sendRedirect("pushupsfrontend.up.railway.app") // ONLINE
+        response.sendRedirect("https://pushupsfrontend.up.railway.app") // ONLINE
     }
 }
