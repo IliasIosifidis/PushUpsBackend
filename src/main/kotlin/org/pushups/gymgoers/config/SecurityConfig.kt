@@ -14,6 +14,7 @@ class SecurityConfig(
     private val oAuth2LoginSuccessHandler: OAuth2LoginSuccessHandler
 ) {
 
+
     @Bean
     fun securityFilterChain(http: HttpSecurity, customOidcUserService: CustomOidcUserService): SecurityFilterChain {
         http
@@ -30,6 +31,11 @@ class SecurityConfig(
             .oauth2Login {
                 it.userInfoEndpoint { ui -> ui.oidcUserService(customOidcUserService) }
                 it.successHandler(oAuth2LoginSuccessHandler)
+            }
+            .exceptionHandling {
+                it.authenticationEntryPoint { request, response, _ ->
+                    response.status = 401
+                }
             }
         return http.build()
     }

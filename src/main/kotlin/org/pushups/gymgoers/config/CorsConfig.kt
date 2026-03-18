@@ -10,7 +10,6 @@ class CorsConfig : WebMvcConfigurer {
         registry.addMapping("/api/**")
             .allowedOrigins(
                 "http://localhost:3000",
-                "https://pushupsbackend-production.up.railway.app/api",
                 "https://pushupsfrontend.up.railway.app"
             )
             .allowedMethods("GET","POST","PUT","PATCH","DELETE")
