@@ -32,6 +32,9 @@ class SecurityConfig(
                 it.userInfoEndpoint { ui -> ui.oidcUserService(customOidcUserService) }
                 it.successHandler(oAuth2LoginSuccessHandler)
             }
+            .logout {
+                it.logoutSuccessUrl("https://pushupsfrontend.up.railway.app")
+            }
             .exceptionHandling {
                 it.authenticationEntryPoint { request, response, _ ->
                     response.status = 401
