@@ -36,6 +36,7 @@ class OAuth2LoginSuccessHandler(
             )
 
         //Send to the frontend after login
-        response.sendRedirect("http://localhost:3000")
+//        response.sendRedirect("http://localhost:3000")
+        response.sendRedirect("https://pushupsgym.netlify.app")
     }
 }
