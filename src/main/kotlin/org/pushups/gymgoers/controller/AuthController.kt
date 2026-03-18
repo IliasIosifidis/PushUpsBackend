@@ -1,6 +1,8 @@
 package org.pushups.gymgoers.controller
 
+import org.pushups.gymgoers.dto.MemberDto
 import org.pushups.gymgoers.repository.MemberRepository
+import org.pushups.gymgoers.service.MemberService
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.oauth2.core.user.OAuth2User
@@ -9,8 +11,17 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/auth")
 class AuthController(
-    private val memberRepository: MemberRepository
+    private val memberRepository: MemberRepository,
+    private val memberService: MemberService
 ) {
+    // DEMO ONLY!!
+    @PutMapping("/demo/{id}/toggle-role")
+    fun toggleRole(
+        @PathVariable id: Long
+    ) : ResponseEntity<MemberDto> =
+        ResponseEntity.ok(memberService.toggleRole(id))
+
+
 
     @GetMapping("/me")
     fun getCurrentUser(@AuthenticationPrincipal user: OAuth2User?): ResponseEntity<Any> {

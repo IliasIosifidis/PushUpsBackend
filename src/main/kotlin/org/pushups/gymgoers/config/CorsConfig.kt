@@ -14,5 +14,6 @@ class CorsConfig : WebMvcConfigurer {
             )
             .allowedMethods("GET","POST","PUT","PATCH","DELETE")
             .allowedHeaders("*")
+            .allowCredentials(true)
     }
 }

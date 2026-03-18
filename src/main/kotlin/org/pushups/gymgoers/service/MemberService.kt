@@ -14,4 +14,5 @@ interface MemberService {
     fun findByName(name: String, pageable: Pageable): Page<MemberDto>
     fun updateMember(req: UpdateMemberRequest, id: Long): MemberDto
     fun toggleActive(id: Long): MemberDto
+    fun toggleRole(id: Long): MemberDto
 }

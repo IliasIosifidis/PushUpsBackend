@@ -1,5 +1,6 @@
 package org.pushups.gymgoers.service
 
+import jakarta.persistence.EntityNotFoundException
 import org.pushups.gymgoers.dto.AddMemberRequest
 import org.pushups.gymgoers.dto.MemberDto
 import org.pushups.gymgoers.dto.UpdateMemberRequest
@@ -56,6 +57,13 @@ class MemberServiceImpl(
         val member = repository.findById(id)
             .orElseThrow { ResourceNotFoundException("Member not found") }
         member.active = !member.active
+        return repository.save(member).toDto()
+    }
+
+    override fun toggleRole(id: Long): MemberDto {
+        val member = repository.findById(id)
+            .orElseThrow { EntityNotFoundException("Member not found") }
+        member.role = if (member.role == "ADMIN") "MEMBER" else "ADMIN"
         return repository.save(member).toDto()
     }
 }
