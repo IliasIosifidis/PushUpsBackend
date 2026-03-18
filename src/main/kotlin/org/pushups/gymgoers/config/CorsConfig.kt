@@ -11,7 +11,7 @@ class CorsConfig : WebMvcConfigurer {
             .allowedOrigins(
                 "http://localhost:3000",
                 "https://pushupsbackend-production.up.railway.app/api",
-                "https://pushupsgym.netlify.app"
+                "https://pushupsfrontend.up.railway.app/"
             )
             .allowedMethods("GET","POST","PUT","PATCH","DELETE")
             .allowedHeaders("*")
