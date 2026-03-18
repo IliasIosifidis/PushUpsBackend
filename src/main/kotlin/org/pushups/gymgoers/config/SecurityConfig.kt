@@ -1,5 +1,6 @@
 package org.pushups.gymgoers.config
 
+import org.pushups.gymgoers.service.CustomOidcUserService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
@@ -14,7 +15,7 @@ class SecurityConfig(
 ) {
 
     @Bean
-    fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
+    fun securityFilterChain(http: HttpSecurity, customOidcUserService: CustomOidcUserService): SecurityFilterChain {
         http
             .cors {  }
             .csrf { it.disable() }
@@ -27,6 +28,7 @@ class SecurityConfig(
                     .anyRequest().permitAll()
             }
             .oauth2Login {
+                it.userInfoEndpoint { ui -> ui.oidcUserService(customOidcUserService) }
                 it.successHandler(oAuth2LoginSuccessHandler)
             }
         return http.build()

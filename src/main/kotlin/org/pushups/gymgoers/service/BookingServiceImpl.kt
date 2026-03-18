@@ -12,6 +12,7 @@ import org.pushups.gymgoers.model.Booking
 import org.pushups.gymgoers.repository.BookingRepository
 import org.pushups.gymgoers.repository.GymClassRepository
 import org.pushups.gymgoers.repository.MemberRepository
+import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -49,7 +50,11 @@ class BookingServiceImpl(
             date = date,
             bookedAt = LocalDateTime.now()
         )
-        return bookingRepository.save(booking).toDto()
+        try {
+            return bookingRepository.save(booking).toDto()
+        } catch (e: DataIntegrityViolationException){
+            throw IllegalArgumentException("Member is already booked for this class")
+        }
     }
 
     override fun deleteBooking(id: Long) {

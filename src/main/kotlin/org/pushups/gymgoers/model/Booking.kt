@@ -5,7 +5,10 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "booking")
+@Table(name = "booking",
+    uniqueConstraints = [
+        UniqueConstraint(columnNames = ["member_id", "gym_class_id", "date"])
+])
 data class Booking(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,

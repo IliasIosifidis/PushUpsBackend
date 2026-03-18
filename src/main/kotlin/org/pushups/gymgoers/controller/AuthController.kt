@@ -1,5 +1,6 @@
 package org.pushups.gymgoers.controller
 
+import org.springframework.security.core.Authentication
 import org.pushups.gymgoers.dto.MemberDto
 import org.pushups.gymgoers.repository.MemberRepository
 import org.pushups.gymgoers.service.MemberService
@@ -20,8 +21,6 @@ class AuthController(
         @PathVariable id: Long
     ) : ResponseEntity<MemberDto> =
         ResponseEntity.ok(memberService.toggleRole(id))
-
-
 
     @GetMapping("/me")
     fun getCurrentUser(@AuthenticationPrincipal user: OAuth2User?): ResponseEntity<Any> {
