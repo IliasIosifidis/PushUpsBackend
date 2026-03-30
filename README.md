@@ -43,8 +43,8 @@ A full-stack gym management application built with **Spring Boot / Kotlin** and 
 
 ```
 ┌─────────────┐       OAuth2        ┌──────────────────┐        JPA         ┌─────────┐
-│   Nuxt.js   │ ──── sessions ────▶ │   Spring Boot    │ ◀───────────────▶  │  MySQL  │
-│  (Frontend) │ ◀─── JSON API ───── │   (Backend)      │                    │   (DB)  │
+│   Nuxt.js   │ ──── sessions ────▶│   Spring Boot    │ ◀───────────────▶ │  MySQL  │
+│  (Frontend) │ ◀─── JSON API ─────│   (Backend)      │                    │   (DB)  │
 └─────────────┘                     └──────────────────┘                    └─────────┘
                                            │
                                     Google OAuth2
